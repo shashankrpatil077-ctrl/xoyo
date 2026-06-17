@@ -88,14 +88,14 @@ LITE_MODE = True   # Set to False to unlock Standard/Full tier services
 
 ```mermaid
 graph TB
-    classDef frontend fill:#0A0A0A,stroke:#0070F3,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
-    classDef core fill:#0A0A0A,stroke:#7928CA,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
-    classDef mem fill:#0A0A0A,stroke:#FF0080,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
-    classDef reason fill:#0A0A0A,stroke:#F5A623,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
-    classDef tool fill:#0A0A0A,stroke:#00DFD8,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
-    classDef watch fill:#0A0A0A,stroke:#FF4D4D,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
-    classDef gpu fill:#0A0A0A,stroke:#50E3C2,stroke-width:1.5px,stroke-dasharray: 4 4,color:#FFFFFF,rx:6,ry:6
-    classDef db fill:#0A0A0A,stroke:#0070F3,stroke-width:1.5px,color:#FFFFFF
+    classDef frontend fill:#0A0A0A,stroke:#0070F3,stroke-width:2px,color:#FFFFFF,rx:6,ry:6
+    classDef core fill:#0A0A0A,stroke:#7928CA,stroke-width:2px,color:#FFFFFF,rx:6,ry:6
+    classDef mem fill:#0A0A0A,stroke:#FF0080,stroke-width:2px,color:#FFFFFF,rx:6,ry:6
+    classDef reason fill:#0A0A0A,stroke:#F5A623,stroke-width:2px,color:#FFFFFF,rx:6,ry:6
+    classDef tool fill:#0A0A0A,stroke:#00DFD8,stroke-width:2px,color:#FFFFFF,rx:6,ry:6
+    classDef watch fill:#0A0A0A,stroke:#FF4D4D,stroke-width:2px,color:#FFFFFF,rx:6,ry:6
+    classDef gpu fill:#0A0A0A,stroke:#50E3C2,stroke-width:2px,stroke-dasharray: 4 4,color:#FFFFFF,rx:6,ry:6
+    classDef db fill:#0A0A0A,stroke:#0070F3,stroke-width:2px,color:#FFFFFF
 
     subgraph User["Interface Layer"]
         A["Dashboard UI"]:::frontend
