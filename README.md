@@ -108,46 +108,46 @@ graph TB
     classDef gpu fill:#2f363d,stroke:#8b949e,stroke-width:2px,stroke-dasharray: 5 5,color:#fff,rx:8,ry:8
     classDef db fill:#161b22,stroke:#58a6ff,stroke-width:2px,color:#fff
 
-    subgraph User["🌐 Interface Layer"]
-        A["🖥️ Dashboard UI"]:::frontend
-        B["🔌 WebSockets"]:::frontend
+    subgraph User["Interface Layer"]
+        A["Dashboard UI"]:::frontend
+        B["WebSockets"]:::frontend
     end
     
-    subgraph CoreSys["⚙️ Core Orchestration"]
-        C["🧠 Orchestrator (FastAPI)"]:::core
-        D["🛤️ LLM Router (8 APIs)"]:::core
-        E["⚡ Parallel Workers"]:::core
+    subgraph CoreSys["Core Orchestration"]
+        C["Orchestrator (FastAPI)"]:::core
+        D["LLM Router (8 APIs)"]:::core
+        E["Parallel Workers"]:::core
     end
     
-    subgraph MemorySys["💾 Neural Memory Bank"]
-        J[("🗄️ Redis Cache")]:::db
-        F["📂 Memory Manager"]:::mem
-        G["🔍 Semantic Search"]:::mem
-        I["🌙 Consolidator"]:::mem
+    subgraph MemorySys["Neural Memory Bank"]
+        J[("Redis Cache")]:::db
+        F["Memory Manager"]:::mem
+        G["Semantic Search"]:::mem
+        I["Consolidator"]:::mem
     end
     
-    subgraph LogicSys["🧬 Cognitive Reasoning"]
-        L["⚖️ Active Inference"]:::reason
-        N["🗣️ Multi-Agent Debate"]:::reason
-        O["🛡️ Constitutional Safety"]:::reason
+    subgraph LogicSys["Cognitive Reasoning"]
+        L["Active Inference"]:::reason
+        N["Multi-Agent Debate"]:::reason
+        O["Constitutional Safety"]:::reason
     end
     
-    subgraph ActionSys["🛠️ Execution Tools"]
-        U["🖱️ Desktop Control"]:::tool
-        V["🕸️ Web Agent"]:::tool
-        W["📄 Office Tools"]:::tool
+    subgraph ActionSys["Execution Tools"]
+        U["Desktop Control"]:::tool
+        V["Web Agent"]:::tool
+        W["Office Tools"]:::tool
     end
     
-    subgraph MonitorSys["🩺 Health & Safety"]
-        Z["⏱️ Stuck Detector"]:::watch
-        AB["🩺 Task Doctor"]:::watch
+    subgraph MonitorSys["Health & Safety"]
+        Z["Stuck Detector"]:::watch
+        AB["Task Doctor"]:::watch
     end
     
-    subgraph Perception["👁️ GPU Perception (Optional)"]
+    subgraph Perception["GPU Perception (Optional)"]
         direction LR
-        Q["📹 YOLO Vision"]:::gpu
-        S["🎙️ Whisper STT"]:::gpu
-        T2["🔊 Neural TTS"]:::gpu
+        Q["YOLO Vision"]:::gpu
+        S["Whisper STT"]:::gpu
+        T2["Neural TTS"]:::gpu
     end
 
     %% Routing
