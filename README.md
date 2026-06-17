@@ -87,17 +87,6 @@ LITE_MODE = True   # Set to False to unlock Standard/Full tier services
 ## ▸ Architecture
 
 ```mermaid
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'primaryColor': '#000000',
-    'primaryTextColor': '#F8F8F2',
-    'primaryBorderColor': '#333333',
-    'lineColor': '#444444',
-    'secondaryColor': '#0A0A0A',
-    'tertiaryColor': '#111111'
-  }
-}}%%
 graph TB
     classDef frontend fill:#0A0A0A,stroke:#0070F3,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
     classDef core fill:#0A0A0A,stroke:#7928CA,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
