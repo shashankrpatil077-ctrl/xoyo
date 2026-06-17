@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 XOYO Omega
+#  XOYO Omega
 
 **An Autonomous AI Operating System**
 
