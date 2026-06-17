@@ -1,17 +1,16 @@
+<!-- Animated Header -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1b27,100:161b22&height=200&section=header&text=XOYO%20Omega&fontSize=50&fontColor=58a6ff&animation=fadeIn&fontAlignY=35&desc=Autonomous%20AI%20Operating%20System&descSize=18&descColor=8b949e&descAlignY=55" />
+
 <div align="center">
 
-# XOYO Omega
+[![Python](https://img.shields.io/badge/Python_3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io)
+[![License](https://img.shields.io/badge/License-MIT-444444?style=for-the-badge)](LICENSE)
 
-**An Autonomous AI Operating System**
+<br/>
 
-[![Python](https://img.shields.io/badge/Python_3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)](https://redis.io)
-[![License](https://img.shields.io/badge/License-MIT-444444?style=flat-square)](LICENSE)
-
-A modular, self-healing AI system that orchestrates **27 core microservices** (expandable to 45+ with GPU hardware) into an autonomous agent that can reason, remember, and act on your computer.
-
-[Features](#-features) · [Hardware Tiers](#-hardware-tiers) · [Architecture](#-architecture) · [Quick Start](#-quick-start) · [Services](#-service-catalog) · [License](#-license)
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=18&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=700&lines=27+Core+Microservices+%7C+Expandable+to+45%2B+with+GPU;8+LLM+Providers+%7C+Zero-Failure+Cascading+Fallback;Self-Healing+%7C+Constitutional+Safety+%7C+Hierarchical+Memory" alt="Typing SVG" />
 
 </div>
 
@@ -21,30 +20,43 @@ A modular, self-healing AI system that orchestrates **27 core microservices** (e
 
 XOYO is not a chatbot — it is a **full-stack autonomous AI operating system** designed to run locally on commodity hardware. It orchestrates a constellation of specialized microservices into one cohesive agent:
 
-| Capability | Description | Tier |
-|---|---|---|
-| **Think** | Multi-provider LLM routing across 8 providers (Groq, Cerebras, Mistral, NVIDIA NIM, OpenRouter, Cloudflare, SiliconFlow, Ollama) with zero-failure cascading fallback | Lite |
-| **Remember** | Hierarchical memory — episodic recall, semantic retrieval, personal context, automatic consolidation | Lite |
-| **Reason** | Active Inference, Constitutional AI safety, multi-agent debate for complex decisions | Lite |
-| **Act** | Desktop control, web browsing, Google integration, document generation, autonomous code writing | Lite |
-| **Self-Heal** | Watchdog daemon with crash recovery, stuck-task detection, metacognitive tracing | Lite |
-| **Perceive** | Computer vision (YOLO, Florence, DINO), screen awareness, wakeword detection | GPU |
-| **Speak** | Neural TTS with prosody control, Whisper STT, full voice pipeline | GPU |
-
----
-
-## ▸ Features
-
-| Category | Capabilities |
-|---|---|
-| **Intelligence** | Multi-provider LLM Router (8 providers, cascading fallback), Task-aware model selection, Semantic routing |
-| **Memory** | Episodic memory, Semantic retrieval (vector DB), Personal context, Automatic consolidation, Memory crystallization |
-| **Reasoning** | Active Inference engine, Multi-agent debate, BMSSP solver, Math services |
-| **Tools** | Desktop control, Web/Google agents, Office agent, PPT/DOCX generation, Agent builder |
-| **Safety** | Constitutional AI guardrails, Flow policy engine, Intent classification (BNN), Permission system |
-| **Self-Healing** | Stuck detector, Agent trace, Task doctor, Interrupt FSM, Auto-restart (3x retry) |
-| **Perception** *(GPU)* | YOLO object detection, Florence/DINO vision, Screen awareness, Wakeword detection |
-| **Voice** *(GPU)* | Neural TTS, Prosody control, Whisper STT, Affective loop |
+<table>
+  <tr>
+    <td width="14%" align="center"><strong>Think</strong></td>
+    <td>Multi-provider LLM routing across 8 providers (Groq, Cerebras, Mistral, NVIDIA NIM, OpenRouter, Cloudflare, SiliconFlow, Ollama) with zero-failure cascading fallback</td>
+    <td><code>Lite</code></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Remember</strong></td>
+    <td>Hierarchical memory — episodic recall, semantic retrieval, personal context, automatic consolidation</td>
+    <td><code>Lite</code></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Reason</strong></td>
+    <td>Active Inference, Constitutional AI safety, multi-agent debate for complex decisions</td>
+    <td><code>Lite</code></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Act</strong></td>
+    <td>Desktop control, web browsing, Google integration, document generation, autonomous code writing</td>
+    <td><code>Lite</code></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Self-Heal</strong></td>
+    <td>Watchdog daemon with crash recovery, stuck-task detection, metacognitive tracing</td>
+    <td><code>Lite</code></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Perceive</strong></td>
+    <td>Computer vision (YOLO, Florence, DINO), screen awareness, wakeword detection</td>
+    <td><code>GPU</code></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Speak</strong></td>
+    <td>Neural TTS with prosody control, Whisper STT, full voice pipeline</td>
+    <td><code>GPU</code></td>
+  </tr>
+</table>
 
 ---
 
@@ -53,19 +65,16 @@ XOYO is not a chatbot — it is a **full-stack autonomous AI operating system** 
 XOYO scales to your hardware. Services are organized into tiers so the system runs well on anything from an ultrabook to a workstation.
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│  LITE (8 GB, No GPU)         27 services    Intelligence + Memory + Tools  │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  STANDARD (16 GB, No GPU)   ~35 services    + Reasoning + Science engines  │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  FULL (32 GB+, CUDA GPU)    45+ services    + Vision + Voice + Local LLMs  │
-└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  LITE       8 GB RAM  · No GPU     27 services    Intelligence + Memory     │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  STANDARD   16 GB RAM · No GPU    ~35 services    + Science + Research      │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  FULL       32 GB+    · CUDA GPU   45+ services   + Vision + Voice + LLMs   │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Tier Configuration
-
-The system uses a `LITE_MODE` flag in `xoyo_daemon.py`. By default, Lite Mode is **enabled** for safety on low-RAM systems.
-
+**Switch tiers:**
 ```bash
 # In xoyo_daemon.py — toggle this line:
 LITE_MODE = True   # Set to False to unlock Standard/Full tier services
@@ -258,9 +267,9 @@ All LLM inference is cloud-routed. No local GPU needed.
 <summary><strong>Standard Tier — +8 Services (16 GB RAM, No GPU)</strong></summary>
 <br/>
 
-Deeper reasoning, scientific simulation, and autonomous exploration. Lightweight enough to run without a GPU.
+Deeper reasoning, scientific simulation, and autonomous exploration.
 
-| Service | Description | RAM Impact |
+| Service | Description | RAM |
 |---|---|---|
 | `services/advanced_idle.py` | Autonomous learning during idle time | +200 MB |
 | `services/bayesian_surprise.py` | Novelty detection for information gain | +150 MB |
@@ -271,7 +280,7 @@ Deeper reasoning, scientific simulation, and autonomous exploration. Lightweight
 | `services/deep_research.py` | Multi-step autonomous research | +200 MB |
 | `services/scene_generator.py` | 3D scene composition | +200 MB |
 
-**To enable:** Uncomment these services in `start_xoyo.sh` or set `LITE_MODE = False`.
+To enable: Uncomment these services in `start_xoyo.sh` or set `LITE_MODE = False`.
 
 </details>
 
@@ -279,7 +288,7 @@ Deeper reasoning, scientific simulation, and autonomous exploration. Lightweight
 <summary><strong>Full Tier — +18 Services (32 GB+ RAM, CUDA GPU)</strong></summary>
 <br/>
 
-Real-time perception, speech, and local model inference. **Requires a CUDA-capable GPU with 6+ GB VRAM.**
+Real-time perception, speech, and local model inference. **Requires CUDA GPU with 6+ GB VRAM.**
 
 **Perception & Voice**
 
@@ -309,7 +318,7 @@ Real-time perception, speech, and local model inference. **Requires a CUDA-capab
 | `services/dino_server.py` | DINOv2 visual features | 2 GB |
 | `services/image_generator.py` | AI image generation | 6 GB |
 
-**To enable:** Uncomment desired services in `start_xoyo.sh`. GPU services auto-detect CUDA and fail gracefully on CPU-only systems.
+To enable: Uncomment desired services in `start_xoyo.sh`. GPU services auto-detect CUDA and fail gracefully on CPU-only systems.
 
 </details>
 
@@ -317,15 +326,28 @@ Real-time perception, speech, and local model inference. **Requires a CUDA-capab
 
 ## ▸ Design Philosophy
 
-1. **Zero-Failure LLM Routing** — The Router cascades through 8 providers with automatic retry, rate-limit awareness, and task-aware model selection. A single provider outage never kills the system.
-
-2. **Scale to Your Hardware** — Runs on an 8 GB ultrabook. Uncomment services as your hardware grows. GPU perception and voice are fully optional.
-
-3. **Microservice Architecture** — Each service is an independent process with its own port, communicating via Redis pub/sub and HTTP. Any service can crash without taking down the system.
-
-4. **Constitutional Safety** — Every response passes through ethical guardrails. Destructive actions require explicit user permission.
-
-5. **Self-Healing** — Crashed services are automatically restarted (3x retry). Stuck tasks are detected and recovered by the Task Doctor.
+<table>
+  <tr>
+    <td width="30%"><strong>Zero-Failure LLM Routing</strong></td>
+    <td>Cascades through 8 providers with automatic retry, rate-limit awareness, and task-aware model selection. A single provider outage never kills the system.</td>
+  </tr>
+  <tr>
+    <td><strong>Scale to Your Hardware</strong></td>
+    <td>Runs on an 8 GB ultrabook. Uncomment services as your hardware grows. GPU perception and voice are fully optional.</td>
+  </tr>
+  <tr>
+    <td><strong>Microservice Architecture</strong></td>
+    <td>Each service is an independent process with its own port, communicating via Redis pub/sub and HTTP. Any service can crash without taking down the system.</td>
+  </tr>
+  <tr>
+    <td><strong>Constitutional Safety</strong></td>
+    <td>Every response passes through ethical guardrails. Destructive actions require explicit user permission.</td>
+  </tr>
+  <tr>
+    <td><strong>Self-Healing</strong></td>
+    <td>Crashed services are automatically restarted (3x retry). Stuck tasks are detected and recovered by the Task Doctor.</td>
+  </tr>
+</table>
 
 ---
 
@@ -355,10 +377,5 @@ xoyo/
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
----
-
-<div align="center">
-
-**[Shashank R. Patil](https://github.com/shashankrpatil077-ctrl)** · AI Agent Architect · Web3 Engineer
-
-</div>
+<!-- Animated Footer -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:161b22,50:1a1b27,100:0d1117&height=120&section=footer" />
