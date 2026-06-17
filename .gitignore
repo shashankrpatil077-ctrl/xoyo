@@ -1,0 +1,148 @@
+# ═══════════════════════════════════════════════════════════
+# XOYO — .gitignore (Security-First)
+# ═══════════════════════════════════════════════════════════
+
+# ── Secrets & Environment ──
+.env
+!.env.example
+*.pem
+*.key
+ssl/
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+*.egg
+dist/
+build/
+venv/
+.venv/
+*.whl
+
+# ── ML Model Weights (too large for git) ──
+*.pt
+*.onnx
+*.onnx.json
+*.bin
+*.safetensors
+*.h5
+*.pkl
+*.npy
+*.npz
+yolov8n/
+
+# ── Logs & Runtime Data ──
+logs/
+*.log
+*.out
+
+# ── Databases & Storage ──
+chroma_storage/
+tiny_db_storage/
+test_db/
+test_db2/
+data/
+memories/
+*.db
+*.sqlite
+
+# ── Media & Test Artifacts ──
+*.mp3
+*.wav
+*.mp4
+voices/
+output/
+output.txt
+
+# ── IDE & OS ──
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Node ──
+node_modules/
+frontend/.gradio/
+
+# ── Scratch / Debug / Backup Files ──
+*.bak*
+*.staged
+*.backup*
+*.deprecated
+*.orig
+bad_path/
+archive/
+workspace/
+idle/
+simulation_env/
+.browser_profile/
+.xoyo_artifacts/
+.xoyo_brain/
+
+# ── Misc Junk ──
+tokens.txt
+testfile.txt
+heal_test.txt
+vmao_debug.txt
+vmao_demo.txt
+invalid.json
+payload.json
+swarm_payload.json
+generated_file.txt
+deployment_status.txt
+pending_tasks.txt
+task_status.txt
+verify_all_services_running.txt
+Amazing_Spider_Blog.pdf
+spider_output.html
+memory.txt
+research_notes.txt
+research_summary.txt
+redis_lessons.txt
+block.txt
+test.txt
+advancement_log.txt
+ADVANCEMENT_LOG.txt
+advancements.log
+report_tinyvectordb.md
+
+# ── Other Repos (tracked separately) ──
+NeuralMarket/
+Street_07/
+shashankrpatil077-ctrl/
+github_improvements/
+
+# ── One-off test/exploit scripts ──
+test_*.py
+exploit*.py
+sim_load*.py
+sim_stress*.py
+sim_ws_client.py
+load_test.py
+fix.py
+fix_*.py
+patch.py
+patch_*.py
+batch2_fixer.py
+bug_fixes.py
+check_missing.py
+clean_js.py
+hello.py
+frontend_tester.py
+generate_swarm.py
+qa_stress_test.py
+redis_load_test.py
+latency_diagnostic.py
+
+# ── Research notes (not source code) ──
+*.txt
+!requirements.txt
+research_logs/
+crystallized_skills/
+advancements/
+xoyo_complete_report/

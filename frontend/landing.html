@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XOYO Omega — Autonomous AI System</title>
+  <meta name="description" content="XOYO Omega: 35+ neural services orchestrated into one autonomous AI system">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="loader.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>X</text></svg>">
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js" defer onerror="console.warn('Three.js CDN unavailable — hero animation disabled')"></script>
+  <style>
+    .hero{min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
+    .hero-content{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 60px;position:relative;z-index:10}
+    .hero-headline{max-width:700px}
+    .hero-sub{max-width:560px;font-size:.95rem;color:rgba(255,255,255,.7);margin-top:16px;font-weight:300;line-height:1.7}
+    .hero-ctas{display:flex;align-items:center;gap:24px;margin-top:32px;flex-wrap:wrap;justify-content:center}
+    .hero-stats{display:flex;gap:16px;margin-top:48px;flex-wrap:wrap;justify-content:center}
+    .hero-partners{padding:32px 24px 48px;position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;gap:16px}
+    .hero-partners-label{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);font-weight:500}
+
+    .section-cap{min-height:100vh;position:relative;padding:120px 32px 80px}
+    .section-cap .container{position:relative;z-index:10}
+    .cap-header{margin-bottom:64px}
+    .cap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+    .cap-card{border-radius:20px;padding:32px;min-height:340px;display:flex;flex-direction:column}
+    .cap-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+    .cap-card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .cap-card-tags{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;max-width:70%}
+    .cap-tag{padding:4px 12px;border-radius:9999px;font-size:.68rem;color:rgba(255,255,255,.8);white-space:nowrap}
+    .cap-card h3{font-family:var(--font-display);font-style:italic;font-size:1.8rem;color:white;letter-spacing:-.02em;line-height:1;margin-top:auto}
+    .cap-card p{margin-top:12px;font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.6;font-weight:300;max-width:32ch}
+
+    .section-services{padding:120px 32px 80px;position:relative}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;max-width:960px;margin:48px auto 0}
+    .svc-card{position:relative;max-width:300px;margin:0 auto;width:100%}
+    .svc-glow{position:absolute;inset:0;border-radius:40px;opacity:.5;filter:blur(45px);pointer-events:none}
+    .svc-face{position:relative;z-index:1;height:280px;border-radius:40px;overflow:hidden;border:8px solid transparent}
+    .svc-inner{width:100%;height:100%;padding:28px;display:flex;flex-direction:column;justify-content:space-between}
+    .svc-icon{width:32px;height:32px;color:rgba(255,255,255,.9)}
+    .svc-card h3{font-weight:500;font-size:1.15rem;color:white;margin-bottom:10px;letter-spacing:-.01em}
+    .svc-card p{font-size:.82rem;line-height:1.6;color:rgba(255,255,255,.45)}
+
+    .section-pipe{padding:80px 32px;text-align:center}
+    .pipe-row{display:flex;align-items:center;justify-content:center;gap:0;margin-top:40px;flex-wrap:wrap}
+    .pipe-node{padding:10px 20px;border-radius:9999px;font-size:.78rem;font-weight:500;color:rgba(255,255,255,.6);white-space:nowrap}
+    .pipe-arrow{width:32px;height:1px;background:rgba(255,255,255,.08);position:relative;flex-shrink:0}
+    .pipe-arrow::after{content:'';position:absolute;right:0;top:-3px;border-left:6px solid rgba(255,255,255,.08);border-top:3px solid transparent;border-bottom:3px solid transparent}
+
+    .section-cta{padding:120px 32px;text-align:center;position:relative}
+    .cta-box{max-width:640px;margin:0 auto;padding:64px 48px;border-radius:28px}
+    .cta-box h2{font-family:var(--font-display);font-style:italic;font-size:clamp(2rem,5vw,3.5rem);color:white;line-height:.95;letter-spacing:-.03em;margin-bottom:16px}
+    .cta-box p{font-size:.9rem;color:rgba(255,255,255,.6);margin-bottom:32px}
+    .cta-input-row{display:flex;gap:0;max-width:400px;margin:0 auto;border-radius:9999px;padding:4px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    .cta-input-row input{flex:1;padding:12px 20px;background:transparent;border:none;outline:none;color:white;font-size:.85rem}
+    .cta-input-row input::placeholder{color:rgba(255,255,255,.3)}
+    .cta-input-row button{padding:12px 24px;border-radius:9999px;background:white;color:black;border:none;font-weight:600;font-size:.85rem;white-space:nowrap;cursor:pointer;transition:all .2s}
+    .cta-input-row button:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(255,255,255,.15)}
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="xo-loader" id="loader">
+  <div class="xo-loader-logo">X</div>
+  <div class="xo-loader-bar-track"><div class="xo-loader-bar-fill" id="loaderFill"></div></div>
+  <div class="xo-loader-text" id="loaderText">Initializing neural subsystems</div>
+  <div class="xo-loader-sub" id="loaderSub">0 / 35 services</div>
+</div>
+
+<!-- NAV -->
+<nav class="xo-nav">
+  <div class="xo-nav-inner liquid-glass">
+    <a href="landing.html" class="xo-nav-logo">
+      <div class="xo-nav-logo-mark">X</div>
+      <span class="xo-nav-logo-text">XOYO</span>
+    </a>
+    <div class="xo-nav-links">
+      <a href="landing.html" class="active">Home</a>
+      <a href="canvas.html">Canvas</a>
+      <a href="index.html">Dashboard</a>
+    </div>
+    <a href="canvas.html" class="xo-nav-cta">Launch Canvas <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="three-container interactive" id="heroCanvas"></div>
+  <div class="hero-content">
+    <div class="xo-chip liquid-glass reveal" style="margin-bottom:24px">
+      <span class="xo-chip-badge">Live</span>
+      <span>35 Neural Services Orchestrated Autonomously</span>
+    </div>
+    <h1 class="xo-heading xo-heading-xl hero-headline reveal reveal-delay-1">
+      Intelligence Beyond<br>Boundaries
+    </h1>
+    <p class="hero-sub reveal reveal-delay-2">The first fully autonomous AI ecosystem — 35 interconnected neural services that reason, create, discover, and evolve without human intervention.</p>
+    <div class="hero-ctas reveal reveal-delay-3">
+      <a href="canvas.html" class="btn-primary liquid-glass-strong">Start Building <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+      <a href="index.html" class="btn-ghost">View Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg></a>
+    </div>
+    <div class="hero-stats reveal reveal-delay-4">
+      <div class="stat-card liquid-glass">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="stat-card-value">35+</div>
+        <div class="stat-card-label">Neural Services Active</div>
+      </div>
+      <div class="stat-card liquid-glass">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="stat-card-value">VMAO</div>
+        <div class="stat-card-label">Vision Memory Action Loop</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-partners reveal reveal-delay-5">
+    <span class="hero-partners-label">Powered by cutting-edge architectures</span>
+    <div class="partner-row">
+      <span class="partner-name">DreamerV3</span>
+      <span class="partner-name">Mamba</span>
+      <span class="partner-name">RWKV</span>
+      <span class="partner-name">KAN-PINN</span>
+      <span class="partner-name">Flow-CFM</span>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="section-cap">
+  <div class="container">
+    <div class="cap-header reveal">
+      <span class="xo-kicker">// Capabilities</span>
+      <h2 class="xo-heading xo-heading-lg">Autonomous<br>Intelligence</h2>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card liquid-glass reveal reveal-delay-1">
+        <div class="cap-card-top">
+          <div class="cap-card-icon liquid-glass"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <div class="cap-card-tags"><span class="cap-tag liquid-glass">Reasoning</span><span class="cap-tag liquid-glass">Planning</span><span class="cap-tag liquid-glass">Multi-step</span><span class="cap-tag liquid-glass">Debate</span></div>
+        </div>
+        <div style="flex:1"></div>
+        <h3>The Architect</h3>
+        <p>Orchestrates complex multi-step reasoning through debate councils, world models, and active inference curiosity drives.</p>
+      </div>
+      <div class="cap-card liquid-glass reveal reveal-delay-2">
+        <div class="cap-card-top">
+          <div class="cap-card-icon liquid-glass"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <div class="cap-card-tags"><span class="cap-tag liquid-glass">Physics</span><span class="cap-tag liquid-glass">Materials</span><span class="cap-tag liquid-glass">Bayesian</span><span class="cap-tag liquid-glass">Math</span></div>
+        </div>
+        <div style="flex:1"></div>
+        <h3>The Scientist</h3>
+        <p>Runs autonomous research cycles with physics simulation, materials discovery, and Bayesian surprise hypothesis ranking.</p>
+      </div>
+      <div class="cap-card liquid-glass reveal reveal-delay-3">
+        <div class="cap-card-top">
+          <div class="cap-card-icon liquid-glass"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="cap-card-tags"><span class="cap-tag liquid-glass">YOLO</span><span class="cap-tag liquid-glass">Florence</span><span class="cap-tag liquid-glass">Screen</span><span class="cap-tag liquid-glass">Camera</span></div>
+        </div>
+        <div style="flex:1"></div>
+        <h3>The Perceiver</h3>
+        <p>Continuous desktop awareness with object detection, image captioning, and real-time screen context understanding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE CLUSTERS -->
+<section class="section-services">
+  <div class="container" style="text-align:center">
+    <span class="xo-kicker reveal">// Service Clusters</span>
+    <h2 class="xo-heading xo-heading-lg reveal reveal-delay-1" style="margin-bottom:8px">Built to<br>Orchestrate</h2>
+    <p class="reveal reveal-delay-2" style="color:rgba(255,255,255,.5);font-size:.9rem;max-width:480px;margin:0 auto">Five specialized clusters working in concert through the VMAO autonomous loop.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card reveal reveal-delay-1">
+      <div class="svc-glow" style="background:linear-gradient(137deg,#FF3D77,#FFB1CE 45%,#FF9D3C)"></div>
+      <div class="svc-face" style="background:linear-gradient(#1A1A1C,#1A1A1C) padding-box,linear-gradient(137deg,#FF3D77,#FFB1CE 45%,#FF9D3C) border-box">
+        <div class="svc-inner">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <div><h3>Core Engine</h3><p>Qwen 2.5 Coder backbone with vLLM inference, voice I/O, and constitutional safety gates.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="svc-card reveal reveal-delay-2">
+      <div class="svc-glow" style="background:linear-gradient(137deg,#FFF 0%,#7DD3FC 45%,#06B6D4)"></div>
+      <div class="svc-face" style="background:linear-gradient(#1A1A1C,#1A1A1C) padding-box,linear-gradient(137deg,#FFF 0%,#7DD3FC 45%,#06B6D4) border-box">
+        <div class="svc-inner">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="13.5" cy="6.5" r="0.5" fill="currentColor"/><circle cx="17.5" cy="10.5" r="0.5" fill="currentColor"/><circle cx="8.5" cy="7.5" r="0.5" fill="currentColor"/><circle cx="6.5" cy="12.5" r="0.5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          <div><h3>Creative Suite</h3><p>Stable Diffusion image generation, neural TTS voice synthesis, and flow-matching trajectory design.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="svc-card reveal reveal-delay-3">
+      <div class="svc-glow" style="background:linear-gradient(137deg,#4361EE,#E0AEFF 45%,#F72585)"></div>
+      <div class="svc-face" style="background:linear-gradient(#1A1A1C,#1A1A1C) padding-box,linear-gradient(137deg,#4361EE,#E0AEFF 45%,#F72585) border-box">
+        <div class="svc-inner">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <div><h3>Evolution Lab</h3><p>Self-improving code evolution with DGM mutation, nnGPT model building, and LoRA skill extraction.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section class="section-pipe">
+  <div class="container">
+    <span class="xo-kicker reveal">// Execution Pipeline</span>
+    <h2 class="xo-heading xo-heading-md reveal reveal-delay-1">From Intent to Action</h2>
+    <div class="pipe-row reveal reveal-delay-2">
+      <div class="pipe-node liquid-glass">Input</div><div class="pipe-arrow"></div>
+      <div class="pipe-node liquid-glass">Plan</div><div class="pipe-arrow"></div>
+      <div class="pipe-node liquid-glass">Execute</div><div class="pipe-arrow"></div>
+      <div class="pipe-node liquid-glass">Verify</div><div class="pipe-arrow"></div>
+      <div class="pipe-node liquid-glass">Safety</div><div class="pipe-arrow"></div>
+      <div class="pipe-node liquid-glass" style="color:var(--accent-cyan)">Output</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-cta">
+  <div class="cta-box liquid-glass-strong reveal">
+    <h2>Start Building<br>With XOYO</h2>
+    <p>Drag services onto the canvas, connect them visually, and let the autonomous engine execute your pipeline.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="canvas.html" class="btn-primary liquid-glass-strong">Open Canvas <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+      <a href="index.html" class="btn-primary liquid-glass">Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="xo-footer">
+  <div class="xo-footer-inner">
+    <div class="xo-footer-brand">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="xo-nav-logo-mark">X</div>
+        <span class="xo-nav-logo-text">XOYO Omega</span>
+      </div>
+      <p class="xo-footer-tagline">Autonomous AI that reasons, creates, discovers, and evolves — 35 neural services orchestrated as one.</p>
+    </div>
+    <div class="xo-footer-col">
+      <h4>Navigate</h4>
+      <a href="landing.html">Home</a>
+      <a href="canvas.html">Canvas Builder</a>
+      <a href="index.html">Dashboard HUD</a>
+    </div>
+    <div class="xo-footer-col">
+      <h4>Architecture</h4>
+      <a href="#">VMAO Loop</a>
+      <a href="#">Service Clusters</a>
+      <a href="#">Safety Layer</a>
+    </div>
+  </div>
+  <div class="xo-footer-bottom">
+    <span>XOYO Omega Research 2026</span>
+    <span>35 Neural Services</span>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+// Loader
+const steps=['Connecting to vLLM backbone','Loading neural services','Initializing VMAO loop','Calibrating active inference','Starting autonomous engine'];
+let step=0,pct=0;
+const fill=document.getElementById('loaderFill'),txt=document.getElementById('loaderText'),sub=document.getElementById('loaderSub');
+const loaderInterval=setInterval(()=>{
+  pct+=2+Math.random()*3;
+  if(pct>100)pct=100;
+  fill.style.width=pct+'%';
+  sub.textContent=Math.floor(pct/100*35)+' / 35 services';
+  if(pct>=step/steps.length*100+20&&step<steps.length){txt.textContent=steps[step];step++;}
+  if(pct>=100){clearInterval(loaderInterval);setTimeout(()=>document.getElementById('loader').classList.add('done'),400);}
+},80);
+
+// Three.js Hero
+(function(){
+  const container=document.getElementById('heroCanvas');
+  if(!container||typeof THREE==='undefined')return;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(60,container.offsetWidth/container.offsetHeight,0.1,1000);
+  camera.position.z=4;
+  const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
+  renderer.setSize(container.offsetWidth,container.offsetHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  container.appendChild(renderer.domElement);
+
+  // Wireframe icosahedron
+  const geo=new THREE.IcosahedronGeometry(1.8,1);
+  const mat=new THREE.MeshBasicMaterial({color:0x00d4ff,wireframe:true,transparent:true,opacity:0.12});
+  const mesh=new THREE.Mesh(geo,mat);
+  scene.add(mesh);
+
+  // Inner glow sphere
+  const geo2=new THREE.SphereGeometry(0.8,32,32);
+  const mat2=new THREE.MeshBasicMaterial({color:0x8b5cf6,transparent:true,opacity:0.04});
+  scene.add(new THREE.Mesh(geo2,mat2));
+
+  // Particles
+  const pGeo=new THREE.BufferGeometry();
+  const pCount=200;
+  const positions=new Float32Array(pCount*3);
+  for(let i=0;i<pCount*3;i++)positions[i]=(Math.random()-0.5)*8;
+  pGeo.setAttribute('position',new THREE.BufferAttribute(positions,3));
+  const pMat=new THREE.PointsMaterial({color:0xffffff,size:0.015,transparent:true,opacity:0.3});
+  scene.add(new THREE.Points(pGeo,pMat));
+
+  let mouseX=0,mouseY=0;
+  container.addEventListener('mousemove',e=>{
+    const rect=container.getBoundingClientRect();
+    mouseX=(e.clientX-rect.left)/rect.width*2-1;
+    mouseY=(e.clientY-rect.top)/rect.height*2-1;
+  });
+
+  function animate(){
+    requestAnimationFrame(animate);
+    mesh.rotation.x+=0.002;
+    mesh.rotation.y+=0.003;
+    mesh.rotation.x+=mouseY*0.01;
+    mesh.rotation.y+=mouseX*0.01;
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  window.addEventListener('resize',()=>{
+    camera.aspect=container.offsetWidth/container.offsetHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.offsetWidth,container.offsetHeight);
+  });
+})();
+
+// Scroll reveal
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Live metrics
+async function pollMetrics(){
+  try{
+    const r=await fetch('/health/all',{signal:AbortSignal.timeout(3000)});
+    if(r.ok){const d=await r.json();const el=document.querySelectorAll('.stat-card-value')[0];if(el)el.textContent=d.up+'+';}
+  }catch{}
+}
+setInterval(pollMetrics,10000);
+pollMetrics();
+</script>
+</body>
+</html>

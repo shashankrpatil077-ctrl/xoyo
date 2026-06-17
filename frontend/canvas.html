@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XOYO Omega — Canvas Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="canvas.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>X</text></svg>">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="xo-nav" style="padding:8px 16px">
+  <div class="xo-nav-inner liquid-glass" style="padding:6px 6px 6px 20px">
+    <a href="landing.html" class="xo-nav-logo">
+      <div class="xo-nav-logo-mark" style="width:30px;height:30px;font-size:14px;border-radius:6px">X</div>
+      <span class="xo-nav-logo-text" style="font-size:18px">XOYO</span>
+    </a>
+    <div class="xo-nav-links">
+      <a href="landing.html">Home</a>
+      <a href="canvas.html" class="active">Canvas</a>
+      <a href="index.html">Dashboard</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="cv-status" id="statusDot">
+        <span class="cv-dot"></span>
+        <span id="statusText" style="font-size:.72rem;color:rgba(255,255,255,.5)">Connecting</span>
+      </div>
+      <button class="xo-nav-cta" style="padding:8px 16px;font-size:.78rem" onclick="runWorkflow()" id="btnRun">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Run
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- CANVAS LAYOUT -->
+<div class="cv-layout">
+  <!-- SIDEBAR -->
+  <aside class="cv-sidebar liquid-glass">
+    <div class="cv-sidebar-header">
+      <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.3);font-weight:500">Services</div>
+      <div class="cv-search liquid-glass" style="margin-top:10px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="xo-input" id="searchBlocks" placeholder="Filter services..." style="font-size:.78rem">
+      </div>
+    </div>
+    <div class="cv-block-list" id="blockList"></div>
+  </aside>
+
+  <!-- CANVAS AREA -->
+  <main class="cv-canvas" id="canvasArea">
+    <svg class="cv-svg" id="canvasSvg"></svg>
+    <div class="cv-empty" id="canvasEmpty">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <div style="font-size:.85rem;color:rgba(255,255,255,.15);margin-top:16px">Drag services here to build a workflow</div>
+      <div style="font-size:.72rem;color:rgba(255,255,255,.08);margin-top:4px">Connect outputs to inputs, then run</div>
+    </div>
+  </main>
+
+  <!-- OUTPUT PANEL -->
+  <aside class="cv-output liquid-glass">
+    <div class="cv-output-header">
+      <span style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.3);font-weight:500">Output</span>
+      <button onclick="clearOutput()" style="background:none;border:none;color:rgba(255,255,255,.2);font-size:.68rem;cursor:pointer">Clear</button>
+    </div>
+    <div class="cv-output-log" id="outputLog">
+      <div class="cv-log-msg system">Ready. Drag services to begin.</div>
+    </div>
+  </aside>
+</div>
+
+<script src="canvas.js"></script>
+</body>
+</html>
