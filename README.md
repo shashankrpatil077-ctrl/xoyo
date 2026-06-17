@@ -87,63 +87,99 @@ LITE_MODE = True   # Set to False to unlock Standard/Full tier services
 ## ▸ Architecture
 
 ```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#0d1117',
+    'primaryTextColor': '#c9d1d9',
+    'primaryBorderColor': '#30363d',
+    'lineColor': '#58a6ff',
+    'secondaryColor': '#161b22',
+    'tertiaryColor': '#21262d'
+  }
+}}%%
 graph TB
-    subgraph Frontend
-        A[Dashboard / Landing Page]
-        B[WebSocket Event Bridge]
+    classDef frontend fill:#1f2428,stroke:#58a6ff,stroke-width:2px,color:#fff,rx:8,ry:8
+    classDef core fill:#003d2e,stroke:#2ea043,stroke-width:2px,color:#fff,rx:8,ry:8
+    classDef mem fill:#4a1e4e,stroke:#bc8cff,stroke-width:2px,color:#fff,rx:8,ry:8
+    classDef reason fill:#4a2c00,stroke:#d29922,stroke-width:2px,color:#fff,rx:8,ry:8
+    classDef tool fill:#0e2d5c,stroke:#3b82f6,stroke-width:2px,color:#fff,rx:8,ry:8
+    classDef watch fill:#4c1a1a,stroke:#f85149,stroke-width:2px,color:#fff,rx:8,ry:8
+    classDef gpu fill:#2f363d,stroke:#8b949e,stroke-width:2px,stroke-dasharray: 5 5,color:#fff,rx:8,ry:8
+    classDef db fill:#161b22,stroke:#58a6ff,stroke-width:2px,color:#fff
+
+    subgraph User["🌐 Interface Layer"]
+        A["🖥️ Dashboard UI"]:::frontend
+        B["🔌 WebSockets"]:::frontend
     end
     
-    subgraph Core
-        C[Orchestrator — FastAPI]
-        D[LLM Router — 8 Providers]
-        E[Workers — Parallel Execution]
+    subgraph CoreSys["⚙️ Core Orchestration"]
+        C["🧠 Orchestrator (FastAPI)"]:::core
+        D["🛤️ LLM Router (8 APIs)"]:::core
+        E["⚡ Parallel Workers"]:::core
     end
     
-    subgraph Memory
-        F[Memory Manager]
-        G[Semantic Retrieval]
-        H[Personal Context]
-        I[Consolidator + Crystallizer]
-        J[(Redis)]
+    subgraph MemorySys["💾 Neural Memory Bank"]
+        J[("🗄️ Redis Cache")]:::db
+        F["📂 Memory Manager"]:::mem
+        G["🔍 Semantic Search"]:::mem
+        I["🌙 Consolidator"]:::mem
     end
     
-    subgraph Reasoning
-        L[Active Inference]
-        N[Debate Service]
-        O[Constitutional AI]
-        P[Math / BMSSP]
+    subgraph LogicSys["🧬 Cognitive Reasoning"]
+        L["⚖️ Active Inference"]:::reason
+        N["🗣️ Multi-Agent Debate"]:::reason
+        O["🛡️ Constitutional Safety"]:::reason
     end
     
-    subgraph Tools
-        U[Desktop Control]
-        V[Web Agent]
-        W[Office / Docs]
-        X[Agent Builder]
+    subgraph ActionSys["🛠️ Execution Tools"]
+        U["🖱️ Desktop Control"]:::tool
+        V["🕸️ Web Agent"]:::tool
+        W["📄 Office Tools"]:::tool
     end
     
-    subgraph Watchdogs
-        Z[Stuck Detector]
-        AA[Agent Trace]
-        AB[Task Doctor]
+    subgraph MonitorSys["🩺 Health & Safety"]
+        Z["⏱️ Stuck Detector"]:::watch
+        AB["🩺 Task Doctor"]:::watch
     end
     
-    subgraph GPU Tier — Optional
+    subgraph Perception["👁️ GPU Perception (Optional)"]
         direction LR
-        Q[YOLO / Vision / Screen]
-        S[Whisper STT]
-        T2[Neural TTS / Prosody]
+        Q["📹 YOLO Vision"]:::gpu
+        S["🎙️ Whisper STT"]:::gpu
+        T2["🔊 Neural TTS"]:::gpu
     end
 
-    A <-->|HTTP/WS| C
-    B <-->|Events| C
-    C --> D
-    C <--> F
-    F <--> J
-    G <--> J
-    C --> L & N & O
-    C --> U & V & W & X
-    Z -.->|monitors| C
-    C -.->|optional| Q & S & T2
+    %% Routing
+    A <-->|HTTP/REST| C
+    B <-->|Real-time Events| C
+    C ==>|Tasks| D
+    C -->|Spawns| E
+    
+    %% Memory Access
+    C -.->|Reads/Writes| F
+    F <==> J
+    G <==> J
+    I -.->|Optimization| J
+    
+    %% Cognitive loop
+    C ===>|Delegates| L
+    L --> N
+    L --> O
+    
+    %% Action loop
+    C --->|Commands| U
+    C --->|Commands| V
+    C --->|Commands| W
+    
+    %% Diagnostics
+    Z -.->|Monitors| C
+    AB -.->|Heals| C
+    
+    %% Optional 
+    C -.->|Vision Data| Q
+    C -.->|Voice Cmds| S
+    C -.->|Voice Output| T2
 ```
 
 ---
