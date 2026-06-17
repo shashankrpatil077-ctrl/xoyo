@@ -90,23 +90,23 @@ LITE_MODE = True   # Set to False to unlock Standard/Full tier services
 %%{init: {
   'theme': 'base',
   'themeVariables': {
-    'primaryColor': '#0d1117',
-    'primaryTextColor': '#c9d1d9',
-    'primaryBorderColor': '#30363d',
-    'lineColor': '#58a6ff',
-    'secondaryColor': '#161b22',
-    'tertiaryColor': '#21262d'
+    'primaryColor': '#000000',
+    'primaryTextColor': '#F8F8F2',
+    'primaryBorderColor': '#333333',
+    'lineColor': '#444444',
+    'secondaryColor': '#0A0A0A',
+    'tertiaryColor': '#111111'
   }
 }}%%
 graph TB
-    classDef frontend fill:#1f2428,stroke:#58a6ff,stroke-width:2px,color:#fff,rx:8,ry:8
-    classDef core fill:#003d2e,stroke:#2ea043,stroke-width:2px,color:#fff,rx:8,ry:8
-    classDef mem fill:#4a1e4e,stroke:#bc8cff,stroke-width:2px,color:#fff,rx:8,ry:8
-    classDef reason fill:#4a2c00,stroke:#d29922,stroke-width:2px,color:#fff,rx:8,ry:8
-    classDef tool fill:#0e2d5c,stroke:#3b82f6,stroke-width:2px,color:#fff,rx:8,ry:8
-    classDef watch fill:#4c1a1a,stroke:#f85149,stroke-width:2px,color:#fff,rx:8,ry:8
-    classDef gpu fill:#2f363d,stroke:#8b949e,stroke-width:2px,stroke-dasharray: 5 5,color:#fff,rx:8,ry:8
-    classDef db fill:#161b22,stroke:#58a6ff,stroke-width:2px,color:#fff
+    classDef frontend fill:#0A0A0A,stroke:#0070F3,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
+    classDef core fill:#0A0A0A,stroke:#7928CA,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
+    classDef mem fill:#0A0A0A,stroke:#FF0080,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
+    classDef reason fill:#0A0A0A,stroke:#F5A623,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
+    classDef tool fill:#0A0A0A,stroke:#00DFD8,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
+    classDef watch fill:#0A0A0A,stroke:#FF4D4D,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
+    classDef gpu fill:#0A0A0A,stroke:#50E3C2,stroke-width:1.5px,stroke-dasharray: 4 4,color:#FFFFFF,rx:6,ry:6
+    classDef db fill:#0A0A0A,stroke:#0070F3,stroke-width:1.5px,color:#FFFFFF
 
     subgraph User["Interface Layer"]
         A["Dashboard UI"]:::frontend
